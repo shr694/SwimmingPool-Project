@@ -13,10 +13,12 @@ import Footer from './Components/Footer'
 
 import Price from './Pages/Price'
 
-import Location from './Location'
 import OurPool from './Pages/Pools'
 import Pools from './Pages/Pools'
 import MoreActivities from './Pages/MoreActivities'
+import Location from './Pages/Location'
+import BookindConfirmed from './Components/BookindConfirmed'
+import BookingConfirmed from './Components/BookindConfirmed'
 
 
 
@@ -44,7 +46,7 @@ function App() {
          <Route path="/pricing" element={<Price/>}/>
          <Route path='/location' element={<Location/>}/>
          <Route path="moreactivities" element={<MoreActivities/>}/>
-      
+        <Route path="bookingconfirmed" element={<BookingConfirmed/>}/>
        </Routes>
    
    

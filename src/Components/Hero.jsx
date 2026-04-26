@@ -13,7 +13,7 @@ const Hero = () => {
                 <BookCard/>
                 <img src={water} 
                 alt="pool"
-                className='w-screen  object-cover'/>
+                className='w-screen max-h-screen min-h-[600px] object-cover'/>
                
     </div>
   )

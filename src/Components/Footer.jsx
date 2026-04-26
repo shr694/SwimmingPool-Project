@@ -1,8 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {FaFacebook, FaInstagram, FaTwitter} from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 
 const Footer = () => {
+  const [firstName,setFirstName]=useState("");
+  const[lastName,setLastName]=useState("");
+  const[email,setEmail]=useState("");
+   const[subject,setSubject]=useState("");
+     const[message,setMessage]=useState("");
+     
+     const handleSubmit=async(e)=>{
+      e.preventDefault();
+
+  
+     const formData={
+      firstName,lastName,email,subject,message
+     }
+     try{
+      const response =await fetch("http://localhost:5000/api/send",{
+        method:"POST",headers:{"Content-Type":"application/json"},
+        
+            body:JSON.stringify(formData)
+        
+
+      });
+      const data =await response.json()
+      if(response.ok){
+        alert("Message sent successfully")
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setSubject("");
+        setMessage("")
+        
+      }
+      else{
+        alert(data.message);
+      }
+
+     }catch(error){
+      console.log("Error:",error)
+      alert("server error")
+     }}
+    
+
   const navigate=useNavigate()
   return (
     
@@ -21,36 +62,36 @@ const Footer = () => {
           </p>
         </div>
 
-        <div className="md:col-span-1">
+        <div>
           <h3 className="font-semibold mb-4">
             Contact Us for More Information About Classes & Private Events
           </h3>
 
-          <form className="space-y-4"> 
+          <form onSubmit={handleSubmit} className="space-y-4"> 
             <div className="grid grid-cols-2 gap-4">
-              <input type="text" placeholder="First Name"
+              <input onChange={(e)=>setFirstName(e.target.value)}  type="text" placeholder="First Name"
                 className="border-b outline-none py-1 text-sm"
               />
-              <input type="text" placeholder="Last Name"
+              <input onChange={(e)=>setLastName(e.target.value)} type="text" placeholder="Last Name"
                 className="border-b outline-none py-1 text-sm"
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div onChange={(e)=>setEmail(e.target.value)} className="grid grid-cols-2 gap-4">
               <input type="email"
                 placeholder="Email"className="border-b outline-none py-1 text-sm"
               />
-              <input type="text" placeholder="Subject"
+              <input onChange={(e)=>setSubject(e.target.value)} type="text" placeholder="Subject"
                 className="border-b outline-none py-1 text-sm"
               />
             </div>
 
-            <textarea   placeholder="Leave us a message..."
+            <textarea  onChange={(e)=>setMessage(e.target.value)}  placeholder="Leave us a message..."
             className="w-full border-b outline-none py-1 text-sm"
               rows="3"
             ></textarea>
 
-            <button className="w-full bg-blue-900 text-white py-2 rounded-md hover:bg-blue-800">
+            <button type="submit" className="w-full cursor-pointer bg-blue-900 text-white py-2 rounded-md hover:bg-blue-800">
               Submit
             </button>
           </form>
@@ -59,16 +100,16 @@ const Footer = () => {
 
         <div>
           <ul className="space-y-3 text-gray-700 mb-6">
-            <li className="hover:text-blue-900 cursor-pointer">Activities</li>
-            <li className="hover:text-blue-900 cursor-pointer">Our Pools</li>
-            <li className="hover:text-blue-900 cursor-pointer">Pricing</li>
-            <li className="hover:text-blue-900 cursor-pointer">Visit Us</li>
-            <li onClick={()=>navigate("/footer")} className="hover:text-blue-900 cursor-pointer">FAQ</li>
+            <li onClick={()=>navigate("/moreactivities")} className="hover:text-blue-900 cursor-pointer">Activities</li>
+            <li onClick={()=>navigate("/pools")} className="hover:text-blue-900 cursor-pointer">Our Pools</li>
+            <li onClick={()=>navigate("/pricing")} className="hover:text-blue-900 cursor-pointer">Pricing</li>
+            <li onClick={()=>navigate("/location")} className="hover:text-blue-900 cursor-pointer">Visit Us</li>
+            <li onClick={()=>navigate("/faq")} className="hover:text-blue-900 cursor-pointer">FAQ</li>
           </ul>
           <div className="flex gap-4 ml-20 text-gray-600">
-            <FaFacebook className="cursor-pointer hover:text-blue-500"  />
-            <FaTwitter className="cursor-pointer hover:text-blue-500" />
-            <FaInstagram className="cursor-pointer hover:text-pink-500" />
+            <FaFacebook className="cursor-pointer text-blue-500"  size={20}/>
+            <FaTwitter className="cursor-pointer text-blue-500" size={20}/>
+            <FaInstagram className="cursor-pointer text-pink-500"size={20} />
           </div>
         </div>
       </div>

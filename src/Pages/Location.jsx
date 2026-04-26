@@ -3,9 +3,9 @@ import { GoLocation } from 'react-icons/go'
 
 const Location = () => {
   return (
-    <div className='max-w-6xl h-full p-10 mt-6  mx-auto bg-slate-50 '>
+    <div className='max-w-6xl h-full p-10 mt-6  mx-auto '>
       <div className='bg-slate-100 shadow shadow-sm shadow-gray-400 rounded-lg h-[700px] p-6'>
-        <h3 className='justify-center flex items-center text-3xl font-semibold '><GoLocation/> Visit Us</h3>
+        <h3 className='justify-center flex items-center text-3xl font-semibold text-blue-800'><GoLocation/> Visit Us</h3>
         
         <div className=' h-[500px] bg-slate-200 shadow-sm rounded-md p-10 mt-20 '>
           <p className='text-lg font-semibold  items-center p-6 text-blue-900'>Come Swim With Us,Welland Pool</p>
@@ -13,7 +13,7 @@ const Location = () => {
            <div className='mt-20'>
             <p className='text-lg font-semibold text-blue-900'>Wellond Pool,<p>
               </p>Your City,1</p>
-          <p className=' p-4 text-lg text-blue-500'>Call Us +977 98342546665</p>
+          <p className=' p-4 text-lg text-blue-600'>Call Us +977 9834254665</p>
           <p className='text-blue-900 '>Open Daily:8:00 AM -6:00PM</p>
            </div>
      <div>

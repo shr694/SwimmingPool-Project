@@ -15,7 +15,7 @@ const Contact = () => {
             Customize your experience and enjoy a refreshing atmosphere.
           </p>
 
-         <button onClick={()=>navigate("/footer")} className="bg-blue-900 mt-10  text-white px-6 py-2 rounded-md hover:bg-blue-800 ">
+         <button onClick={()=>navigate("/footer")} className="bg-blue-900 mt-10 cursor-pointer  text-white px-6 py-2 rounded-md hover:bg-blue-800 ">
             Contact Us
           </button>
              </div>
